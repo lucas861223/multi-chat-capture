@@ -74,7 +74,7 @@ Since it's annoying to have to issue a bunch of commands every time you start it
      * Normal users: refer to Setup.
      * Developers: modify the const variable mainChannel, with the #.
    - channels to join- list of chatroom(s) to join on start up.
-     * Normal users: Replace the "lucas861223" in bracket([]) with a list of channels you want to join, each double quoted and separated by a comma. i.e. "lucas861223", "moonmoon", "chewiemelodies"
+     * Normal users: Replace the "lucas861223" in bracket([]) with a list of channels you want to join, each double quoted and separated by a comma. i.e. "lucas861223", "moonmoon", "chewiemelodies". Order does not matter, but your own channel MUST be in there.
      * Developers: modify the const variable channelList.
    - Forcefully toggle PFP on/off.
      * Normal users: this is not possible to set. 
