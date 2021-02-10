@@ -8,7 +8,7 @@ This is a chat overlay for twitch that can be captured by OBS as browser source.
   
   1. Download the latest release from [the release page](https://github.com/lucas861223/multi-chat-capture/releases). 
   2. Open the html file with any editor, i.e. Notepad++.
-  3. Replace both the "lucas861223" to your own twitch handle. Only change the "lucas861223" part, leave the hashtag(#) as is. 
+  3. Replace both the lucas861223 to your own twitch login(your user name, not your display name). All lowercase. Only change the lucas861223 part, leave the hashtag(#) as is.
   4. Save and close.
 </details>
 
@@ -19,24 +19,25 @@ This is a chat overlay for twitch that can be captured by OBS as browser source.
   
   1. Clone this repository
   2. Install dependencies as marked in package.json
-  3. Modify node_module/index.js, specifically replacing both "lucas861223" to your own twitch handle. Only change the "lucas861223" part, leave the hashtag(#) as is. 
+  3. Modify node_module/index.js, specifically replacing both lucas861223 to your own twitch handle. Only change the lucas861223 part, leave the hashtag(#) as is. 
   4. Make other changes you wish to make, save and close.
   5. Bundle index.js using webpack, with the provided webpack.config.js
 
 </details>
 
-After successfully setting it up, you should be able to use OBS or other broadcasting software to capture this HTML file as a browser source. You can then modify the behavior by using Twitch chat commands.
+After successfully setting it up, you should be able to use OBS or other broadcasting software to capture this HTML file as a browser source. You can then modify the behavior by using Twitch chat commands or just modify the default setting.
 
 ## Commands ##
+All of the commands will only work if they're sent to the main channel by the broadcaster of the channel. This means, if it's set up correctly, these commands would only work if you send the commands in your own channel.
 <details>
   <summary>Here is a list of twitch chat commands for this chat overlay.</summary>
  
-   All of these commands can only be executed by the broadcaster of the main channel, which should be the user if it's correctly set up. They will only work if they're sent to the main channel.
+   
   - !join \[channelNames\]
-    * \[channelNames\] A single channel or multiple channels separated by commands and/or space.
+    * \[channelNames\] A single channel or multiple channels separated by commas and/or space.
     * This command joins the channels and read the messages.
   - !leave \[channelnames\]
-    * \[channelNames\] A single channel or multiple channels separated by commands and/or space.
+    * \[channelNames\] A single channel or multiple channels separated by commas and/or space.
     * This command leaves the channels and stops reading the messages.
   - !pfp
     * When joining multiple chats, the default behavior shows the profile picture of the streamer in front of the message to better distinguish which chat the message is from.
@@ -64,9 +65,10 @@ After successfully setting it up, you should be able to use OBS or other broadca
 </details>
 
 ## How to modify default behavior ##
+Since it's annoying to have to issue a bunch of commands every time you start it up, you can modify these changes and save the file(s), so they become the default.
 <details>
   <summary>Here is a list of default settings you can change, and how </summary>
-   Since it's annoying to have to issue a bunch of commands every time you start it up, you can modify these changes and save the file(s), so they become the default. Each of the setting correlates to one of the command. I put them in order, so if the description of the setting is vague, you can cross-read it with the command section. The way to modify it would be the same instruction as the modification step in setup.
+   Each of the setting correlates to one of the command. I put them in order, so if the description of the setting is vague, you can cross-read it with the command section. The way to modify it would be the same instruction as the modification step in setup.
   
    - main channel- where the command is being listened to. This should also be your twitch channel.
      * Normal users: refer to Setup.
@@ -96,7 +98,7 @@ After successfully setting it up, you should be able to use OBS or other broadca
   
   However ComfyJS do not handle timeout and bans, only message delete. This is not really acceptable because in slower chats, the same message may be on screen for a long time. If timeout and bans are not caught and messages are not removed, it may leave some crap on stream for extended period of time. Having to separatedly issue additional command after bans and timeout also seems too annoying. I thought about just extending the original class, but with the way the module was originally set up and the obfuscator used for it to be hosted on CDN, it does not seem possible. 
   
-  In looking for alternatives, I thought of [tmi.js](https://github.com/tmijs/tmi.js), which I had seen in many twitch related JS projects. But there is more problems: it is not hosted on any CDN service that I can find. That means I need to include it using node becuase it also requires a bunch of stuff (and just "requries" itself). For it to be included, I need to use node js, which would make this project more than a .html file, and make it from complicated than "oh just browser capture it lol" to "oh just open cmd, download this download that, type this type that and capture it lol".
+  In looking for alternatives, I thought of [tmi.js](https://github.com/tmijs/tmi.js), which I had seen in many twitch related JS projects. But there is more problems: it is not hosted on any CDN service that I can find. That means I need to include it using node becuase it also requires a bunch of stuff (and just "requries" itself). For it to be included, I need to use node js, which would make this project more than a .html file, and complicated it more from "oh just use it as browser source lol" to "oh just open cmd, download this download that, type this type that and use this URL as browser source lol".
   
   So to solve it, I try to find how to "combine" these dependencies and such into 1 file. Then I saw [webpack](https://webpack.js.org/). I used it, it worked great, but here's yet ANOTHER problem... In order to protect the source code, webpack uses obfuscator, which makes the whole script un-readable. So instead of having a .html with clean, readable code in the script section and telling normal users "oh just open the .html file, change this to that", I have to make hard-coded strings that which won't get obfuscated so they can easily control-F to find and replace them amongst the spaghetti... And because I need to use tmi.js and webpack, I need to include all these other stuff (webpack.config.js, node_module, index.js... etc.) in the repo. And this is how the whole project ended up in this mess.   
 </details>
