@@ -52,11 +52,14 @@ All of the commands will only work if they're sent to the main channel by the br
     * \[fontSize\] Name of the font family. For example, Ariel or consolas. Capitalization does not matter. Default is Ariel.
     * This command changes the font of chat.
   - !color \[fontColor\]
-    * \[fontColor\] Hex value of the color you want the chat to be in, for example, !color #ff0000 for red font. Default is black.
+    * \[fontColor\] Hex value of the color you want the chat to be in, for example, !color #ff0000 for red font. Default is black. [Here is a RGB color picker.](https://www.w3schools.com/colors/colors_picker.asp)
     * This command changes the color of chat message (except /me message, and user names).
-  - !background backgroundColor
-    * \[backgroundColor\] Hex value of the color you want the background of the chat to be, for example, !background #000000 for black background. Default is transparent.
+  - !background \[backgroundColor\]
+    * \[backgroundColor\] RGB hex value of the color you want the background of the chat to be, for example, !background #000000 for black background. The hash tag is needed. Default is black. [Here is a RGB color picker.](https://www.w3schools.com/colors/colors_picker.asp)
     * This command changes the background of the chat (except the highlighted messages if they are not turned off).
+  - !opacity \[value\]
+    * \[value\] integer ranging from 0-255, representing how opaque the background should be. The default is 0 (totally transparent). 
+    * This command changes the opacity of the background of the chat (will not affect highlighted messages, text, badges and emote).
   - !clear
     * This command clears the whole chat.
     * Note that this command can also be achieved when doing /clear from the main channel.
@@ -74,8 +77,8 @@ Since it's annoying to have to issue a bunch of commands every time you start it
      * Normal users: refer to Setup.
      * Developers: modify the const variable mainChannel, with the #.
    - channels to join- list of chatroom(s) to join on start up.
-     * Normal users: Replace the "lucas861223" in bracket([]) with a list of channels you want to join, each double quoted and separated by a comma. i.e. "lucas861223", "moonmoon", "chewiemelodies". Order does not matter, but your own channel MUST be in there.
-     * Developers: modify the const variable channelList.
+     * Normal users: Replace the "lucas861223" in bracket([]) with a list of channel or channels you want to join, each double quoted and separated by a comma. i.e. to join 3 channels, replace it with "lucas861223", "chewiemelodies", "moonmoon". Order does not matter, however your own channel MUST be in one of these.
+     * Developers: modify the const variable channelList the same as the above standard.
    - Forcefully toggle PFP on/off.
      * Normal users: this is not possible to set. 
      * Developers: set the variable needsPFPOverride to true, and pfpOverride to true if you want it on, false if off.
@@ -84,10 +87,14 @@ Since it's annoying to have to issue a bunch of commands every time you start it
      * Developers: set mentionHighlightOvverride to true to turn off highlighting.
   
   For the rest of the setting, they can all be achieved by modifying the css in index.html regardless of how you set it up.
-   - font size- in :root, --font-size. Also change --emote-size to 1.5x of font size.
-   - font color- in :root, --color
-   - font- in :root, --font-family
-   - background color- in :root. --background. Replace it with hex value.
+   - font size
+     * in :root, --font-size. Also change --emote-size to 1.5x of font size.
+   - font color
+     * in :root, --color. Replace it with RGB hex value. Include the hastag. 
+   - font
+     * in :root, --font-family
+   - background color
+     * in :root. --background. Replace it with RGBA hex value. The A is for transparency. Include the hashtag. [Here is a RGBA color picker.](https://hugabor.github.io/color-picker/)
 </details>
 
 ## So what the hell is this setup? ##
