@@ -60,6 +60,8 @@ All of the commands will only work if they're sent to the main channel by the br
   - !opacity \[value\]
     * \[value\] integer ranging from 0-255, representing how opaque the background should be. The default is 0 (totally transparent). 
     * This command changes the opacity of the background of the chat (will not affect highlighted messages, text, badges and emote).
+  - !shadow
+    * This command toggles text shadow on/off. For now the settings of the shadow cannot be modified via command, however you can modify it by changing the css of the html file regardless of which setup you chose. The default behavior is off.
   - !clear
     * This command clears the whole chat.
     * Note that this command can also be achieved when doing /clear from the main channel.
@@ -94,7 +96,9 @@ Since it's annoying to have to issue a bunch of commands every time you start it
    - font
      * in :root, --font-family
    - background color
-     * in :root. --background. Replace it with RGBA hex value. The A is for transparency. Include the hashtag. [Here is a RGBA color picker.](https://hugabor.github.io/color-picker/)
+     * in :root, --background. Replace it with RGBA hex value. The A is for transparency. Include the hashtag. [Here is a RGBA color picker.](https://hugabor.github.io/color-picker/)
+   - text shadow
+     * in :root, --text-shadow. Replace it with the settings you want. Google for format.
 </details>
 
 ## So what the hell is this setup? ##
