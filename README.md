@@ -1,5 +1,5 @@
 # Multi Chat Capture
-This is a chat overlay for twitch that can be captured by OBS as browser source. The focus of this project is to have a single chat that reads from multiple channels, so collaborations between streamers only need to capture a single chat, instead of everyone's chat. BTTV emotes are supported.
+This is a chat overlay for twitch that can be captured by OBS as browser source. The focus of this project is to have a single chat that reads from multiple channels, so collaborations between streamers only need to capture a single chat, instead of everyone's chat. BTTV and FFZ emotes are supported.
 
 
 ## Setup ##
