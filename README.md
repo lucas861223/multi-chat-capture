@@ -1,6 +1,9 @@
 # Multi Chat Capture
 This is a chat overlay for twitch that can be captured by OBS as browser source. The focus of this project is to have a single chat that reads from multiple channels, so collaborations between streamers only need to capture a single chat, instead of everyone's chat. BTTV and FFZ emotes are supported.
 
+**Discontinued**
+Twitch now asks for OAuth tokens or App Access Token to get user information, which is needed for profile pictures, channel id for channel emotes. It's pretty understandable but stupid. The user id part is pretty easily resolved, but as far as I can find, no one has done a profile picture fetcher, and having profile picture is what this overlay is originally for. Getting and refreshing the tokens are a pain, especially since this is just a chat overlay, so I likely won't do anything about it. 
+
 
 ## Setup ##
   
